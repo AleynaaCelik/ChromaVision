@@ -3,7 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaVision.Domain", "ChromaVision.Domain\ChromaVision.Domain.csproj", "{5C10CDD2-1641-49A0-88A0-771E42B6710F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaVision.Core", "ChromaVision.Core\ChromaVision.Core.csproj", "{551856AE-E23B-46C0-85C3-687C6E41D0DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaVision.Application", "ChromaVision.Application\ChromaVision.Application.csproj", "{C210473E-6D44-43E4-A981-5A5FF44BD752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaVision.Infrastructure", "ChromaVision.Infrastructure\ChromaVision.Infrastructure.csproj", "{F5DED327-4594-4DBA-98BC-55D193AD12C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaVision.API", "ChromaVision.API\ChromaVision.API.csproj", "{797F46E1-2ACC-44B7-A825-266211111BBE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C10CDD2-1641-49A0-88A0-771E42B6710F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C10CDD2-1641-49A0-88A0-771E42B6710F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C10CDD2-1641-49A0-88A0-771E42B6710F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C10CDD2-1641-49A0-88A0-771E42B6710F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{551856AE-E23B-46C0-85C3-687C6E41D0DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{551856AE-E23B-46C0-85C3-687C6E41D0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{551856AE-E23B-46C0-85C3-687C6E41D0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{551856AE-E23B-46C0-85C3-687C6E41D0DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C210473E-6D44-43E4-A981-5A5FF44BD752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C210473E-6D44-43E4-A981-5A5FF44BD752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C210473E-6D44-43E4-A981-5A5FF44BD752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C210473E-6D44-43E4-A981-5A5FF44BD752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DED327-4594-4DBA-98BC-55D193AD12C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DED327-4594-4DBA-98BC-55D193AD12C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DED327-4594-4DBA-98BC-55D193AD12C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DED327-4594-4DBA-98BC-55D193AD12C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{797F46E1-2ACC-44B7-A825-266211111BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797F46E1-2ACC-44B7-A825-266211111BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797F46E1-2ACC-44B7-A825-266211111BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797F46E1-2ACC-44B7-A825-266211111BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

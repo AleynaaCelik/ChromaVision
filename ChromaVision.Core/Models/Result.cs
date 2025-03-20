@@ -10,7 +10,8 @@ namespace ChromaVision.Core.Models
     {
         public bool Succeeded { get; }
         public IReadOnlyList<string> Errors { get; }
-        protected Result(bool succeeded, IEnumerable<string> errors)
+
+        protected Result(bool succeeded, IEnumerable<string>? errors = null)
         {
             Succeeded = succeeded;
             Errors = errors?.ToArray() ?? new string[0];
@@ -18,7 +19,7 @@ namespace ChromaVision.Core.Models
 
         public static Result Success()
         {
-            return new Result(true, new string[] { });
+            return new Result(true);
         }
 
         public static Result Failure(IEnumerable<string> errors)
@@ -34,9 +35,9 @@ namespace ChromaVision.Core.Models
 
     public class Result<T> : Result
     {
-        public T Data { get; }
+        public T? Data { get; }
 
-        protected Result(T data, bool succeeded, IEnumerable<string> errors)
+        protected Result(T? data, bool succeeded, IEnumerable<string>? errors = null)
             : base(succeeded, errors)
         {
             Data = data;
@@ -44,7 +45,7 @@ namespace ChromaVision.Core.Models
 
         public static Result<T> Success(T data)
         {
-            return new Result<T>(data, true, new string[] { });
+            return new Result<T>(data, true);
         }
 
         public new static Result<T> Failure(IEnumerable<string> errors)

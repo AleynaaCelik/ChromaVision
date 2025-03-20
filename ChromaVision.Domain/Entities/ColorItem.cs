@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace ChromaVision.Domain.Entities
 
         protected ColorItem() { } // For EF Core
 
-        public ColorItem(string hexCode, string name = "", int orderIndex = 0)
+        // ChromaVision.Domain/Entities/ColorItem.cs - HexCode için null kontrolü
+        public ColorItem(string hexCode, string? name = null, int orderIndex = 0)
         {
             if (string.IsNullOrWhiteSpace(hexCode))
                 throw new ArgumentException("Hex code cannot be empty", nameof(hexCode));
@@ -27,6 +29,7 @@ namespace ChromaVision.Domain.Entities
             OrderIndex = orderIndex;
         }
 
+       
         public void UpdateHexCode(string hexCode)
         {
             if (string.IsNullOrWhiteSpace(hexCode))

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChromaVision.Application.Features.ColorPalettes.Commands
+namespace ChromaVision.Application.Features.ColorPalettes.Commands.CreatePalette
 {
     public class CreatePaletteCommandValidator : AbstractValidator<CreatePaletteCommand>
     {

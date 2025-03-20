@@ -14,7 +14,7 @@ namespace ChromaVision.Infrastructure.Logging
 
         public LoggerAdapter(ILogger<T> logger)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public void LogInformation(string message, params object[] args)

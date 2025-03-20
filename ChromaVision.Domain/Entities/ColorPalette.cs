@@ -9,8 +9,8 @@ namespace ChromaVision.Domain.Entities
     public class ColorPalette
     {
         public Guid Id { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public string Name { get; private set; } = string.Empty; // Default değer
+        public string Description { get; private set; } = string.Empty; // Default değer
         public IReadOnlyList<ColorItem> Colors => _colors.AsReadOnly();
         public Guid? UserId { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -20,14 +20,10 @@ namespace ChromaVision.Domain.Entities
 
         protected ColorPalette() { } // For EF Core
 
-        // ChromaVision.Domain/Entities/ColorPalette.cs - Name için null kontrolü
-        public ColorPalette(string name, string? description = null, List<ColorItem>? colors = null, Guid? userId = null)
+        public ColorPalette(string? name, string? description, List<ColorItem>? colors, Guid? userId = null)
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Name cannot be empty", nameof(name));
-
             Id = Guid.NewGuid();
-            Name = name;
+            Name = name ?? string.Empty;
             Description = description ?? string.Empty;
             _colors = colors ?? new List<ColorItem>();
             UserId = userId;

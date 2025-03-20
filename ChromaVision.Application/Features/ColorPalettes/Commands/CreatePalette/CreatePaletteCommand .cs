@@ -15,18 +15,5 @@ namespace ChromaVision.Application.Features.ColorPalettes.Commands.CreatePalette
         public string Description { get; set; } = string.Empty;
         public List<string> Colors { get; set; } = new List<string>();
         public Guid? UserId { get; set; }
-
-        public CreatePaletteCommand()
-        {
-            // Boş constructor
-        }
-
-        public CreatePaletteCommand(string name, string description, List<string> colors, Guid? userId = null)
-        {
-            Name = name ?? string.Empty;
-            Description = description ?? string.Empty;
-            Colors = colors ?? new List<string>();
-            UserId = userId;
-        }
     }
 }

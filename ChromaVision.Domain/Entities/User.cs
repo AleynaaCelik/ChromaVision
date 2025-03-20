@@ -9,20 +9,20 @@ namespace ChromaVision.Domain.Entities
     public class User
     {
         public Guid Id { get; private set; }
-        public string Username { get; private set; }
-        public string Email { get; private set; }
-        public string PasswordHash { get; private set; }
+        public string Username { get; private set; } = string.Empty; // Default değer
+        public string Email { get; private set; } = string.Empty; // Default değer
+        public string PasswordHash { get; private set; } = string.Empty; // Default değer
         public DateTime CreatedAt { get; private set; }
         public DateTime? LastLoginAt { get; private set; }
 
         protected User() { } // For EF Core
 
-        public User(string username, string email, string passwordHash)
+        public User(string? username, string? email, string? passwordHash)
         {
             Id = Guid.NewGuid();
-            Username = username ?? throw new ArgumentNullException(nameof(username));
-            Email = email ?? throw new ArgumentNullException(nameof(email));
-            PasswordHash = passwordHash ?? throw new ArgumentNullException(nameof(passwordHash));
+            Username = username ?? string.Empty;
+            Email = email ?? string.Empty;
+            PasswordHash = passwordHash ?? string.Empty;
             CreatedAt = DateTime.UtcNow;
         }
 

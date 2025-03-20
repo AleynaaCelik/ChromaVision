@@ -10,26 +10,22 @@ namespace ChromaVision.Domain.Entities
     public class ColorItem
     {
         public Guid Id { get; private set; }
-        public string HexCode { get; private set; }
-        public string Name { get; private set; }
+        public string HexCode { get; private set; } = string.Empty; // Default değer
+        public string Name { get; private set; } = string.Empty; // Default değer
         public int OrderIndex { get; private set; }
         public Guid PaletteId { get; private set; }
 
         protected ColorItem() { } // For EF Core
 
-        // ChromaVision.Domain/Entities/ColorItem.cs - HexCode için null kontrolü
         public ColorItem(string hexCode, string? name = null, int orderIndex = 0)
         {
-            if (string.IsNullOrWhiteSpace(hexCode))
-                throw new ArgumentException("Hex code cannot be empty", nameof(hexCode));
-
             Id = Guid.NewGuid();
-            HexCode = NormalizeHexCode(hexCode);
+            HexCode = string.IsNullOrWhiteSpace(hexCode) ? "#000000" : NormalizeHexCode(hexCode);
             Name = name ?? string.Empty;
             OrderIndex = orderIndex;
         }
 
-       
+
         public void UpdateHexCode(string hexCode)
         {
             if (string.IsNullOrWhiteSpace(hexCode))

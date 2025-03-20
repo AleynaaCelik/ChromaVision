@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using ChromaVision.Core.Interfaces;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

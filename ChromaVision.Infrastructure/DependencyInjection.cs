@@ -1,8 +1,11 @@
 ﻿using AutoMapper.Configuration;
 using ChromaVision.Application.Common.Interfaces;
 using ChromaVision.Core.Interfaces;
+using ChromaVision.Domain.Repositories;
 using ChromaVision.Infrastructure.Logging;
 using ChromaVision.Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

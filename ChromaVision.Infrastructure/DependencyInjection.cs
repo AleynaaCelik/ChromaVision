@@ -3,6 +3,7 @@ using ChromaVision.Application.Common.Interfaces;
 using ChromaVision.Core.Interfaces;
 using ChromaVision.Domain.Repositories;
 using ChromaVision.Infrastructure.Logging;
+using ChromaVision.Infrastructure.Repositories;
 using ChromaVision.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

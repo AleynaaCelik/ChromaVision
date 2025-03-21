@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ChromaVision.Application\ChromaVision.Application.csproj" />
     <ProjectReference Include="..\ChromaVision.Core\ChromaVision.Core.csproj" />
+    <ProjectReference Include="..\ChromaVision.Domain\ChromaVision.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

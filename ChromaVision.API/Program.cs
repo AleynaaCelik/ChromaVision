@@ -1,4 +1,5 @@
 // ChromaVision.API/Program.cs
+using ChromaVision.API.Extensions;
 using ChromaVision.Application;
 using ChromaVision.Application.Common.Interfaces;
 using ChromaVision.Core;
@@ -6,7 +7,6 @@ using ChromaVision.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
@@ -19,11 +19,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers();
 
-// Add layer dependencies
-builder.Services.AddCore();
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
-
 // Add API versioning
 builder.Services.AddApiVersioning(options =>
 {
@@ -31,6 +26,14 @@ builder.Services.AddApiVersioning(options =>
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.DefaultApiVersion = new ApiVersion(1, 0);
 });
+
+// Add layers
+builder.Services.AddCore();
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+// Add JWT Authentication
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -40,12 +43,7 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "ChromaVision API",
         Version = "v1",
-        Description = "API for ChromaVision Color Palette Generator",
-        Contact = new OpenApiContact
-        {
-            Name = "Your Name",
-            Email = "your.email@example.com"
-        }
+        Description = "API for the ChromaVision Color Palette Generator"
     });
 
     // Add JWT Authentication to Swagger
@@ -73,14 +71,6 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
-
-    // Include XML comments if available
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    if (File.Exists(xmlPath))
-    {
-        c.IncludeXmlComments(xmlPath);
-    }
 });
 
 // Add CORS
@@ -104,7 +94,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ChromaVision API v1"));
 
-    // Apply migrations in development
+    // Initialize Database in Development
     using (var scope = app.Services.CreateScope())
     {
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();

@@ -9,8 +9,8 @@ namespace ChromaVision.Application.Common.Mappings
     public class UserDto
     {
         public Guid Id { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
+        public required string Username { get; set; } // required anahtar kelimesi ekleyin
+        public required string Email { get; set; }    // required anahtar kelimesi ekleyin
         public DateTime CreatedAt { get; set; }
         public DateTime? LastLoginAt { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ChromaVision.Application.Common.Mappings;
+using ChromaVision.Application.Common.Models;
 using ChromaVision.Core.Interfaces;
 using ChromaVision.Core.Models;
 using ChromaVision.Domain.Entities;

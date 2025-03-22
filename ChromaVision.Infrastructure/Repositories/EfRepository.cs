@@ -11,9 +11,9 @@ namespace ChromaVision.Infrastructure.Repositories
 {
     public class EfRepository<T> : IRepository<T> where T : class
     {
-        protected readonly ApplicationDbContext _dbContext;
+        protected readonly IApplicationDbContext _dbContext; // Interface kullanın
 
-        public EfRepository(ApplicationDbContext dbContext)
+        public EfRepository(IApplicationDbContext dbContext) // Interface parametre
         {
             _dbContext = dbContext;
         }

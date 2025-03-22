@@ -1,4 +1,4 @@
-﻿using AutoMapper.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using ChromaVision.Application.Common.Interfaces;
 using ChromaVision.Core.Interfaces;
 using ChromaVision.Domain.Repositories;
@@ -6,13 +6,15 @@ using ChromaVision.Infrastructure.Logging;
 using ChromaVision.Infrastructure.Repositories;
 using ChromaVision.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChromaVision.Infrastructure.Data; // ApplicationDbContext için
+using Microsoft.AspNetCore.Authentication.JwtBearer; // JwtBearerDefaults için
+using Microsoft.IdentityModel.Tokens; // TokenValidationParameters için
 
 namespace ChromaVision.Infrastructure
 {

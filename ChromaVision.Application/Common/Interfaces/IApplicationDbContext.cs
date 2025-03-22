@@ -14,6 +14,14 @@ namespace ChromaVision.Application.Common.Interfaces
         DbSet<ColorItem> ColorItems { get; }
         DbSet<User> Users { get; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        // EntityFramework metodları ekleyelim
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+        // Set metodu ekleyelim
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
+
+        // Entry metodu ekleyelim
+        Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
     }
 }
+

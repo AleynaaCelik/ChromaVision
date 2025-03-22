@@ -1,4 +1,5 @@
 ﻿using ChromaVision.Application.Common.Mappings;
+using ChromaVision.Application.Common.Models;
 using ChromaVision.Core.Models;
 using MediatR;
 using System;

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using ChromaVision.Application.Common.Models;
 using ChromaVision.Application.Features.ColorPalettes.Commands.CreatePalette;
+using ChromaVision.Application.Features.Users.Commands.RegisterUser;
 using ChromaVision.Domain.Entities;
 using System;
 using System.Collections.Generic;

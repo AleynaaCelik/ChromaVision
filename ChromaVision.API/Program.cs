@@ -4,6 +4,7 @@ using ChromaVision.Application;
 using ChromaVision.Application.Common.Interfaces;
 using ChromaVision.Core;
 using ChromaVision.Infrastructure;
+using ChromaVision.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

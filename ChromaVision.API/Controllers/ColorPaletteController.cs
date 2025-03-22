@@ -1,5 +1,6 @@
 ﻿using ChromaVision.Application.Common.Interfaces;
 using ChromaVision.Application.Common.Mappings;
+using ChromaVision.Application.Common.Models;
 using ChromaVision.Application.Features.ColorPalettes.Commands.CreatePalette;
 using ChromaVision.Core.Models;
 using MediatR;

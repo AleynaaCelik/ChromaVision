@@ -12,17 +12,18 @@ namespace ChromaVision.Infrastructure.Repositories
 {
     public class UserRepository : EfRepository<User>, IUserRepository
     {
-        private readonly IApplicationDbContext _dbContext;
+        private new readonly IApplicationDbContext _dbContext;
 
         public UserRepository(IApplicationDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
 
+        // UserRepository.cs
         public async Task<User> GetByUsernameAsync(string username)
         {
             return await _dbContext.Users
-                .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+                .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower()) ?? new User("", "", ""); // Null safety
         }
 
         public async Task<User> GetByEmailAsync(string email)

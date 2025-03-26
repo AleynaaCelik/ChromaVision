@@ -13,8 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChromaVision.Infrastructure.Data; // ApplicationDbContext için
-using Microsoft.AspNetCore.Authentication.JwtBearer; // JwtBearerDefaults için
-using Microsoft.IdentityModel.Tokens; // TokenValidationParameters için
 
 namespace ChromaVision.Infrastructure
 {
@@ -27,6 +25,10 @@ namespace ChromaVision.Infrastructure
                 options.UseSqlServer(
                     configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+            // Register ApplicationDbContext as IApplicationDbContext
+            services.AddScoped<IApplicationDbContext>(provider =>
+                provider.GetRequiredService<ApplicationDbContext>());
 
             // Register repositories
             services.AddScoped<IColorPaletteRepository, ColorPaletteRepository>();
@@ -43,26 +45,8 @@ namespace ChromaVision.Infrastructure
             // Add HttpContextAccessor
             services.AddHttpContextAccessor();
 
-            // Add JWT Authentication
-            var jwtSettings = configuration.GetSection("JwtSettings");
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["Issuer"],
-                    ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]))
-                };
-            });
+            // JWT kimlik doğrulama kısmını kaldırdım çünkü bu Program.cs içinde zaten ekleniyor
+            // Bu, "Scheme already exists: Bearer" hatasını çözecek
 
             return services;
         }
